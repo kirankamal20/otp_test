@@ -1,14 +1,24 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:otp_test/features/otp/presentation/otp_view.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:otp_test/l10n/l10n.dart';
+import 'package:otp_test/router/autorouter_pod.dart';
 
-class App extends StatelessWidget {
+class App extends ConsumerStatefulWidget {
   const App({super.key});
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _AppState();
+}
+
+class _AppState extends ConsumerState<App> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final approuter = ref.watch(autorouterProvider);
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
         colorScheme: ColorScheme.fromSwatch(
           accentColor: const Color(0xFF512DA8),
@@ -16,7 +26,10 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const OtpView(),
+      routerDelegate: AutoRouterDelegate(
+        approuter,
+      ),
+      routeInformationParser: approuter.defaultRouteParser(),
     );
   }
 }

@@ -61,6 +61,15 @@ class _BioMetricAuthViewState extends ConsumerState<BioMetricAuthView> {
                 .text
                 .size(20)
                 .color(Colors.grey)
+                .make(),'Use touch ID to login to\nbank account,'
+                .text
+                .size(20)
+                .color(Colors.grey)
+                .make(),
+                 'Use touch ID to login to\nbank account,'
+                .text
+                .size(20)
+                .color(Colors.grey)
                 .make(),
             Consumer(
               builder: (context, ref, child) {

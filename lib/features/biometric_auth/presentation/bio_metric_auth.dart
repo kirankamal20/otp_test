@@ -114,6 +114,16 @@ class _BioMetricAuthViewState extends ConsumerState<BioMetricAuthView> {
                     ),
                   ),
                 ).w(240),
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(10),
+                    suffixIcon: const Icon(Icons.remove_red_eye_outlined),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                ).w(240),
                 const Spacer(),
                 VxBox(
                   child: const Icon(
